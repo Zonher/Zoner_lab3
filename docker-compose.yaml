@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: pg-lab2
+    container_name: pglab2
+    environment:
+      POSTGRES_DB: lab2db
+      POSTGRES_USER: lab2-owner
+      POSTGRES_PASSWORD: initial
+    ports:
+      - "5432:5432"
+    restart: always
+
+  flyway:
+    image: redgate/flyway:13.2.0-alpine
+    container_name: flyway
+    platform: linux/amd64
+    environment:
+      DB_HOST: postgres
+      DB_NAME: lab2db
+      MIGRATE_USER: migrate
+      MIGRATE_PASSWORD: migrate
+    volumes:
+      - ./db/flyway/sql:/flyway/sql:ro
+      - ./db/flyway/conf/:/flyway/conf/:ro
+    command:
+      - testConnection
+      - migrate
+    depends_on:
+      - postgres
+    restart: always
