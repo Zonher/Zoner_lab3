@@ -1,5 +1,6 @@
 package ru.nikita.lab2.service.impl;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.nikita.lab2.api.dto.FriendDto;
 import ru.nikita.lab2.dao.entity.UserEntity;
@@ -12,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class FriendServiceImpl implements FriendService {
     private final UserRepository userRepository;
 

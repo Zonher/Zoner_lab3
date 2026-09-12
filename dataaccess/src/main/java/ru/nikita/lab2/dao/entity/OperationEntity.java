@@ -1,7 +1,8 @@
 package ru.nikita.lab2.dao.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Audited;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.AuditTable;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.type.descriptor.jdbc.NumericJdbcType;
 import ru.nikita.lab2.api.enumeration.OpType;
@@ -13,8 +14,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "operations")
 @Access(AccessType.FIELD)
-@Audited
-@Audited.Table(name = "operations_aud")
 public class OperationEntity {
     @Id
     private UUID id;

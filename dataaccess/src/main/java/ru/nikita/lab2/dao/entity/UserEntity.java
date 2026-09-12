@@ -1,7 +1,7 @@
 package ru.nikita.lab2.dao.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Audited;
+
 
 import ru.nikita.lab2.api.enumeration.Gender;
 import ru.nikita.lab2.api.enumeration.HairColor;
@@ -14,8 +14,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "users")
 @Access(AccessType.FIELD)
-@Audited
-@Audited.Table(name = "users_aud")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -35,7 +33,7 @@ public class UserEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_friends",
-            joinColumns = @JoinColumn(name = "user_id"),
+            joinColumns = @JoinColumn(name = "owner_id"),
             inverseJoinColumns = @JoinColumn(name = "friend_id")
     )
     private Set<UserEntity> friends = new HashSet<>();

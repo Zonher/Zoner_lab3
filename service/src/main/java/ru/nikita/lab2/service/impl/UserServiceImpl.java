@@ -1,8 +1,7 @@
 package ru.nikita.lab2.service.impl;
 
-import com.jetbrains.exported.JBRApi;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.nikita.lab2.api.dto.UserDto;
 import ru.nikita.lab2.api.enumeration.Gender;
 import ru.nikita.lab2.api.enumeration.HairColor;
 import ru.nikita.lab2.dao.entity.UserEntity;
@@ -14,7 +13,7 @@ import ru.nikita.lab2.service.exception.NoUserFoundException;
 import java.util.List;
 import java.util.UUID;
 
-@JBRApi.Service
+@Service
 public class UserServiceImpl implements UserCRUDService {
     private final UserRepository userRepository;
 

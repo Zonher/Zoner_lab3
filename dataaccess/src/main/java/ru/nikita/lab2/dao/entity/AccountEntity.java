@@ -11,8 +11,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import org.hibernate.envers.AuditTable;
-import org.hibernate.envers.Audited;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.type.descriptor.jdbc.NumericJdbcType;
 
@@ -24,8 +22,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "accounts")
 @Access(AccessType.FIELD)
-@Audited
-@AuditTable(value = "accounts_aud")
 @NamedQuery(name = "findAccountsByUser", query = "select a from AccountEntity a where a.user = :user")
 public class AccountEntity {
     @Id
